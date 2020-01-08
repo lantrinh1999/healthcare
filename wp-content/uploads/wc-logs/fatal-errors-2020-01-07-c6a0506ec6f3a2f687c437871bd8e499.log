@@ -1,0 +1,20 @@
+2020-01-07T08:10:35+00:00 CRITICAL Uncaught Error: Call to undefined function dd() in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\header.php:5
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template.php(722): require_once()
+#1 C:\xampp\htdocs\healthcare\wp-includes\template.php(671): load_template('C:\\xampp\\htdocs...', true)
+#2 C:\xampp\htdocs\healthcare\wp-includes\general-template.php(41): locate_template(Array, true)
+#3 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php(5): get_header()
+#4 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#7 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\header.php on line 5
+
+2020-01-07T08:23:38+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php on line 5
+
+2020-01-07T08:24:06+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php on line 9
+
+2020-01-07T09:51:56+00:00 CRITICAL syntax error, unexpected ':', expecting ']' in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 36
+
+2020-01-07T09:53:59+00:00 CRITICAL syntax error, unexpected ':', expecting ']' in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 51
+

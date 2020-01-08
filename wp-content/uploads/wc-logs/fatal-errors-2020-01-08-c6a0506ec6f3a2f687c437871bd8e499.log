@@ -1,0 +1,42 @@
+2020-01-08T08:50:49+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function excerpt_words(), 1 passed in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\category.php on line 70 and exactly 2 expected in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php:11
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\category.php(70): excerpt_words('Lorem ipsum dol...')
+#1 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php on line 11
+
+2020-01-08T08:52:24+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function excerpt_words(), 1 passed in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\category.php on line 70 and exactly 2 expected in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php:11
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\category.php(70): excerpt_words('Lorem ipsum dol...')
+#1 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\functions.php on line 11
+
+2020-01-08T10:26:49+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function pveser_title(), 0 passed in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\sidebar-category.php on line 59 and exactly 1 expected in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\pveser-framework\includes\globals\functions_global.php:34
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\sidebar-category.php(59): pveser_title()
+#1 C:\xampp\htdocs\healthcare\wp-includes\template.php(722): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\wp-includes\template.php(671): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\healthcare\wp-includes\general-template.php(111): locate_template(Array, true)
+#4 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\single.php(18): get_sidebar('category')
+#5 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xamp in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\pveser-framework\includes\globals\functions_global.php on line 34
+
+2020-01-08T10:27:47+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function pveser_title(), 0 passed in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\sidebar-category.php on line 59 and exactly 1 expected in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\pveser-framework\includes\globals\functions_global.php:34
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\sidebar-category.php(59): pveser_title()
+#1 C:\xampp\htdocs\healthcare\wp-includes\template.php(722): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\wp-includes\template.php(671): load_template('C:\\xampp\\htdocs...', true)
+#3 C:\xampp\htdocs\healthcare\wp-includes\general-template.php(111): locate_template(Array, true)
+#4 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\single.php(18): get_sidebar('category')
+#5 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#7 C:\xamp in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\pveser-framework\includes\globals\functions_global.php on line 34
+
+2020-01-08T10:28:31+00:00 CRITICAL syntax error, unexpected '==' (T_IS_EQUAL), expecting ')' in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\pveser-framework\includes\globals\functions_global.php on line 22
+

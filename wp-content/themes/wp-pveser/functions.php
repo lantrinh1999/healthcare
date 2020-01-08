@@ -7,6 +7,19 @@ function dd($data){
 	echo '</pre>';
 	exit;
 }
+
+function excerpt_words($str , $number = 100)
+{
+    $excerpt = $str;
+    $excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
+    $excerpt = strip_shortcodes($excerpt);
+    $excerpt = strip_tags($excerpt);
+    $excerpt = substr($excerpt, 0, $number);
+    $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+    $excerpt = trim(preg_replace('/\s+/', ' ', $excerpt));
+    return $excerpt . "...";
+}
+
 if( function_exists('acf_add_options_page') ) {
 
 	acf_add_options_page(array(

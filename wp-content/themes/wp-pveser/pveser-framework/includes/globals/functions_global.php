@@ -19,7 +19,7 @@ function get_dynamic_sidebar($index = 1)
     return $sidebar_contents;
 }
 
-function pveser_excerpt($number)
+function pveser_excerpt($number = 100)
 {
     $excerpt = get_the_content();
     $excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
@@ -31,7 +31,7 @@ function pveser_excerpt($number)
     return $excerpt . "...";
 }
 
-function pveser_title($number)
+function pveser_title($number = 50)
 {
     $excerpt = get_the_title();
     $excerpt = preg_replace(" (\[.*?\])", '', $excerpt);

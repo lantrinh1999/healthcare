@@ -37,6 +37,7 @@ define( 'DB_CHARSET', 'utf8mb4' );
 /** Kiểu database collate. Đừng thay đổi nếu không hiểu rõ. */
 define('DB_COLLATE', '');
 
+define ('WPLANG', 'vi_VN');
 /**#@+
  * Khóa xác thực và salt.
  *

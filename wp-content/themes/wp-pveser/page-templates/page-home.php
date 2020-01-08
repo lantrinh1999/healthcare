@@ -2,14 +2,14 @@
 /* Template Name: Trang chủ */
 ?>
 <!-- =====  HEADER  ===== -->
+<?php get_header() ?>
+<?php get_sidebar('home') ?>
+<!-- =====  DATA  ===== -->
 <?php 
 $slide = get_field('silde');
 $tb = get_field('top_banner');
 $midb = get_field('mid_banner');
-
 ?>
-<?php get_header() ?>
-<?php get_sidebar('home') ?>
 
 
 <div id="column-right" class="col-sm-8 col-md-8 col-lg-9 mtb_30">

@@ -2,6 +2,8 @@
 global $wp;
 do_action('pveser_header');
 $logo = get_field('logo','option');
+$top_category = get_field('top_category', 'option');
+// dd($top_category);
 ?>
 <body>
 	<!-- =====  LODER  ===== -->
@@ -210,25 +212,16 @@ $logo = get_field('logo','option');
 							<div class="col-sm-4 col-md-4 col-lg-3">
 								<div class="category">
 									<div class="menu-bar" data-target="#category-menu,#category-menu-responsive" data-toggle="collapse" aria-expanded="true" role="button">
-										<h4 class="category_text">Top category</h4>
+										<h4 class="category_text">DANH MỤC NỔI BẬT</h4>
 										<span class="i-bar"><i class="fa fa-bars"></i></span></div>
 									</div>
 									<div id="category-menu-responsive" class="navbar collapse " aria-expanded="true" style="" role="button">
 										<div class="nav-responsive">
 											<ul class="nav  main-navigation collapse in">
-												<li><a href="#">Pharmacy</a></li>
-												<li><a href="#">Health</a></li>
-												<li><a href="#">Beauty</a></li>
-												<li><a href="#">Vitamins</a></li>
-												<li><a href="#">Sweating</a></li>
-												<li><a href="#">Coughs & Colds</a></li>
-												<li><a href="#">Hair Loss</a></li>
-												<li><a href="#">Weight Loss</a></li>
-												<li><a href="#">Antifungals</a></li>
-												<li><a href="#">Pain Relief</a></li>
-												<li><a href="#">Stop Smoking</a></li>
-												<li><a href="#">Skin Conditions</a></li>
-												<li><a href="#">Top Brands</a></li>
+												<?php if (!empty($top_category) && is_array($top_category)): ?>
+												<?php foreach ($top_category as $topcate): ?>
+													<li><a href="<?= get_term_link( $topcate, 'product_cat' ); ?>"><?= get_the_category_by_ID($topcate) ?></a></li>
+												<?php endforeach ?> <?php endif ?>
 											</ul>
 										</div>
 									</div>
@@ -257,19 +250,10 @@ $logo = get_field('logo','option');
 								<div id="category-menu" class="navbar collapse mb_40 hidden-sm-down in" aria-expanded="true" style="" role="button">
 									<div class="nav-responsive">
 										<ul class="nav  main-navigation collapse in ">
-											<li><a href="#">Pharmacy</a></li>
-											<li><a href="#">Health</a></li>
-											<li><a href="#">Beauty</a></li>
-											<li><a href="#">Vitamins</a></li>
-											<li><a href="#">Sweating</a></li>
-											<li><a href="#">Coughs & Colds</a></li>
-											<li><a href="#">Hair Loss</a></li>
-											<li><a href="#">Weight Loss</a></li>
-											<li><a href="#">Antifungals</a></li>
-											<li><a href="#">Pain Relief</a></li>
-											<li><a href="#">Stop Smoking</a></li>
-											<li><a href="#">Skin Conditions</a></li>
-											<li><a href="#">Top Brands</a></li>
+											<?php if (!empty($top_category) && is_array($top_category)): ?>
+											<?php foreach ($top_category as $topcate): ?>
+												<li><a href="<?= get_term_link( $topcate, 'product_cat' ); ?>"><?= get_the_category_by_ID($topcate) ?></a></li>
+											<?php endforeach ?> <?php endif ?>
 										</ul>
 									</div>
 								</div>

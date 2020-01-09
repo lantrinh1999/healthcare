@@ -1,0 +1,16 @@
+2020-01-09T08:35:00+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:1533
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 1533
+
+2020-01-09T08:35:29+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:1533
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 1533
+

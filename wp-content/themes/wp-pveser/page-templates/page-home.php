@@ -1511,95 +1511,60 @@ $midb = get_field('mid_banner');
 </div>
 </div>
 <!-- =====  product end  ===== -->
+<?php 
+$args = array(
+	'post_type'=> 'post',
+	'orderby'    => 'ID',
+	'post_status' => 'publish',
+	'order'    => 'DESC',
+	'posts_per_page' => 10 
+);
+$query = new WP_Query( $args );
+
+?>
 <!-- =====  Blog ===== -->
-<div id="Blog" class="mt_40">
-	<div class="heading-part mb_20 ">
-		<h2 class="main_title">Latest from the Blog</h2>
-	</div>
-	<div class="blog-contain box">
-		<div class="blog owl-carousel ">
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_01.jpg" alt="HealthCare"> </a> </div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
+<?php if ($query->have_posts()): ?>
+	<div id="Blog" class="mt_40">
+		<div class="heading-part mb_20 ">
+			<h2 class="main_title">Bài viết mới nhất</h2>
+		</div>
+		<div class="blog-contain box">
+			<div class="blog owl-carousel ">
+				<?php  while ($query->have_posts()): ?>
+					<?php $query->the_post();?>
+					<div class="item">
+						<div class="box-holder">
+							<div class="thumb post-img">
+								<a href="<?= get_the_permalink() ?>"> 
+									<?php if (has_post_thumbnail()): ?><img src="<?= get_the_post_thumbnail_url($post->ID) ?>"  alt="<?= get_the_title() ?>">
+									<?php else: ?>
+										<img src="<?= __THEME_HOST . '/assets/images/default-image.png' ?>"  alt="<?= get_the_title() ?>">
+									<?php endif ?>
+								</a> 
+							</div>
+							<div class="post-info mtb_20 ">
+								<h6 class="mb_10 text-uppercase"> 
+									<a href="<?= get_the_permalink() ?>">
+										<?= get_the_title() ?>
+									</a> 
+								</h6>
+								<p><?= pveser_excerpt() ?></p>
+								<div class="date-time">
+									<div class="day"> 11</div>
+									<div class="month">Aug</div>
+								</div>
+							</div>
+						</div>     
+					</div>     
+				<?php endwhile; ?>
 			</div>
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_02.jpg" alt="HealthCare"> </a></div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_03.jpg" alt="HealthCare"> </a></div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_04.jpg" alt="HealthCare"> </a></div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_05.jpg" alt="HealthCare"> </a></div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="box-holder">
-					<div class="thumb post-img"><a href="#"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/blog/blog_img_06.jpg" alt="HealthCare"> </a></div>
-					<div class="post-info mtb_20 ">
-						<h6 class="mb_10 text-uppercase"> <a href="single_blog.html">Unknown printer took a galley book.</a> </h6>
-						<p>Aliquam egestas pellentesque est. Etiam a orci Nulla id enim feugiat ligula ullamcorper scelerisque. Morbi eu luctus nisl.</p>
-						<div class="date-time">
-							<div class="day"> 11</div>
-							<div class="month">Aug</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 	<!-- =====  Blog end ===== -->
 </div>
+<?php endif ?>
+
 </div>
 </div>
 </div>

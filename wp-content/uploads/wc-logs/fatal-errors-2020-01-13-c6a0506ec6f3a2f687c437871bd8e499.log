@@ -1,0 +1,48 @@
+2020-01-13T09:47:18+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:90
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 90
+
+2020-01-13T09:48:22+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:90
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 90
+
+2020-01-13T10:21:30+00:00 CRITICAL Uncaught Error: Call to a member function the_post() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:93
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 93
+
+2020-01-13T10:21:51+00:00 CRITICAL Uncaught Error: Call to a member function the_post() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:93
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 93
+
+2020-01-13T10:22:18+00:00 CRITICAL Uncaught Error: Call to a member function the_post() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:93
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 93
+
+2020-01-13T10:23:09+00:00 CRITICAL Uncaught Error: Call to a member function the_post() on array in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:93
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 93
+

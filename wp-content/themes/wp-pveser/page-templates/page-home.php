@@ -4,7 +4,7 @@
 ?>
 
 <!-- =====  HEADER  ===== -->
-<?php //get_header() ?>
+<?php get_header() ?>
 <?php get_sidebar('home') ?>
 <!-- =====  DATA  ===== -->
 <?php 
@@ -85,7 +85,7 @@ $midb = get_field('mid_banner');
 			] 
 		);
 		$products = $query->get_products();
-		dd($products);
+		// dd($products);
 		?>
 		<div class="tab-pane active" id="nArrivals">
 			<div class="nArrivals owl-carousel">

@@ -21,7 +21,11 @@ function get_dynamic_sidebar($index = 1)
 
 function pveser_excerpt($number = 100)
 {
+
     $excerpt = get_the_content();
+    if(strlen($excerpt)) {
+        return $excerpt;
+    }
     $excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
     $excerpt = strip_shortcodes($excerpt);
     $excerpt = strip_tags($excerpt);
@@ -88,10 +92,10 @@ function pveser_related_post($number, $title)
                 <div class="wrap-related-post row">
                     <?php
 
-            while ($related_query->have_posts()) {
-                $count++;
-                $related_query->the_post();
-                ?>
+                    while ($related_query->have_posts()) {
+                        $count++;
+                        $related_query->the_post();
+                        ?>
                         <div class="wrap-item-news col-md-6">
                             <div class="media custom-media">
                                 <div class="media-left">
@@ -105,9 +109,9 @@ function pveser_related_post($number, $title)
                             </div>
                         </div> <!-- END /. wrap-item-news -->
                         <?php
-echo ($count % 2 == 0) ? '<div class="clearfix"></div>' : false;
-            }
-            ?>
+                        echo ($count % 2 == 0) ? '<div class="clearfix"></div>' : false;
+                    }
+                    ?>
                 </div><!--End .row-->
             </div><!--End .related_post-->
             <?php
@@ -207,7 +211,7 @@ function dhemy_ajax_search()
 // get the terms of taxonomy
     $terms = get_terms($tax, array('hide_empty' => false, 'search' => $_POST['term'], 'number' => 10)
         // do not hide empty terms
-    );
+);
 
     if (count($terms) > 0) {
         foreach ($terms as $term) {
@@ -226,11 +230,11 @@ function rel_next_prev()
 
     if (get_previous_posts_link()) {?>
         <link rel="prev" href="<?php echo get_pagenum_link($paged - 1); ?>" /><?php
-}
+    }
 
     if (get_next_posts_link()) {?>
         <link rel="next" href="<?php echo get_pagenum_link($paged + 1); ?>" /><?php
-}
+    }
 
 }
 add_action('wp_head', 'rel_next_prev');
@@ -282,7 +286,7 @@ function pveser_menu_bootstrap($location, $level, $container_class = '', $contai
         'container_class' => $container_class,
         'container_id' => $container_id,
         'walker' => new wp_bootstrap_navwalker())
-    );
+);
 }
 
 function pveser_breadcrumbs()
@@ -698,4 +702,287 @@ $contributor = get_role('contributor');
 $contributor->add_cap('upload_files');
 }
  */
+
+/**
+ * CUSTOM WOOCOMMERCE
+ * 
+ */
+
+
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+add_action('woocommerce_before_main_content', 'custom_woocommerce_breadcrumb', 20);
+
+function custom_woocommerce_breadcrumb($args = array())
+{
+    if (is_product()) {
+        $t = get_the_title();
+    } else {
+        $t = woocommerce_page_title(false);
+    }
+    if ( apply_filters( 'woocommerce_show_page_title', true ) ){
+        $title = '<h1 class="woocommerce-products-header__title page-title">'.$t.'</h1>';
+    }else {
+        $title = '';
+    }
+    
+    $args = wp_parse_args(
+        $args,
+        apply_filters(
+            'woocommerce_breadcrumb_defaults',
+            array(
+                'delimiter' => '',
+                'wrap_before' => '<div class="breadcrumb ptb_20">' . $title,
+                'wrap_after' => '</div>',
+                'before' => '',
+                'after' => '',
+                'home' => _x('Home', 'breadcrumb', 'woocommerce'),
+            )
+        )
+    );
+
+    $breadcrumbs = new WC_Breadcrumb();
+
+    if (!empty($args['home'])) {
+        $breadcrumbs->add_crumb($args['home'], apply_filters('woocommerce_breadcrumb_home_url', home_url()));
+    }
+
+    $args['breadcrumb'] = $breadcrumbs->generate();
+    do_action('woocommerce_breadcrumb', $breadcrumbs, $args);
+
+    wc_get_template('global/breadcrumb.php', $args);
+}
+
+remove_action('woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+// custom ordering
+
+
+
+
+
+remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+
+add_action('woocommerce_before_main_content', 'custom_template_before_main_content', 5);
+function custom_template_before_main_content()
+{
+    get_sidebar('category');
+    echo '<div class="col-sm-8 col-md-8 col-lg-9 mtb_30">';
+}
+add_action('woocommerce_after_main_content', 'custom_template_after_main_content', 5);
+function custom_template_after_main_content()
+{
+    echo '</div></div></div>';
+}
+
+//link
+remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+
+
+// custom image product archive-product
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+add_action( 'woocommerce_before_shop_loop_item_title', 'custom_woocommerce_template_loop_product_thumbnail', 10 );
+function custom_woocommerce_template_loop_product_thumbnail()
+{
+    global $product;
+    echo '<div class="image product-imageblock">';
+    echo '<a href="'.get_the_permalink().'" title="'.get_the_title().'">';
+    wc_get_template('loop/sale-flash.php');
+    echo '<img data-name="product_image" src="'.get_the_post_thumbnail_url().'" alt="'.get_the_title().'" title="'.get_the_title().'" class="img-responsive">';
+    echo '<img data-name="product_image" src="'.get_the_post_thumbnail_url().'" alt="'.get_the_title().'" title="'.get_the_title().'" class="img-responsive">';
+    echo '</a>';
+    echo '</div>';
+}
+
+
+// title product archive-product
+remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+add_action( 'woocommerce_shop_loop_item_title', 'custom_woocommerce_template_loop_product_title', 10 );
+function custom_woocommerce_template_loop_product_title()
+{
+    echo '
+    <div class="caption product-detail text-left">
+    <h6 data-name="product_name" class="product-name mt_20">
+    <a href="'.get_the_permalink().'" title="'.get_the_title().'">'. get_the_title().'</a>
+    </h6>
+    <div class="rating">
+    ';
+    wc_get_template( 'loop/rating.php' );
+    echo '
+    </div>
+    <span class="price">
+    <span class="amount">';
+    wc_get_template( 'loop/price.php' );
+    echo '</span>
+    </span>
+    <p class="product-desc mt_20 mb_60">
+    ' . pveser_excerpt() . '
+    </p>
+    <div class="button-group text-center">
+    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+    <div class="compare"><a href="#"><span>Compare</span></a></div>
+    <div class="add-to-cart">
+    ';
+    echo wc_get_template( 'loop/add-to-cart.php' , custom_woocommerce_args_loop_add_to_cart() );
+    echo '
+    </a></div>
+    </div>
+    </div>';
+
+
+    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+//sale 
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+// remove default title
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+// add_action( 'woocommerce_after_shop_loop_item', 'custom_woocommerce_template_loop_add_to_cart', 10 );
+function custom_woocommerce_args_loop_add_to_cart($args = array())
+{
+    global $product;
+
+    if ($product) {
+        $defaults = array(
+            'quantity' => 1,
+            'class' => implode(
+                ' ',
+                array_filter(
+                    array(
+                        'button',
+                        'product_type_' . $product->get_type(),
+                        $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+                        $product->supports('ajax_add_to_cart') && $product->is_purchasable() && $product->is_in_stock() ? 'ajax_add_to_cart' : '',
+                    )
+                )
+            ),
+            'attributes' => array(
+                'data-product_id' => $product->get_id(),
+                'data-product_sku' => $product->get_sku(),
+                'aria-label' => $product->add_to_cart_description(),
+                'rel' => 'nofollow',
+            ),
+        );
+
+        $args = apply_filters('woocommerce_loop_add_to_cart_args', wp_parse_args($args, $defaults), $product);
+
+        if (isset($args['attributes']['aria-label'])) {
+            $args['attributes']['aria-label'] = wp_strip_all_tags($args['attributes']['aria-label']);
+        }
+        return $args;
+    }
+}
+
+
+//ordering
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+
+
+add_action( 'woocommerce_before_shop_loop', 'custom_category_page_wrapper', 30 );
+
+function custom_category_page_wrapper()
+{
+    echo '
+    <div class="category-page-wrapper mb_30">
+    <div class="col-xs-6 sort-wrapper">
+    <label class="control-label" for="input-sort">Sắp xếp :</label>
+    <div class="sort-inner">';
+    wc_get_template( 'loop/orderby.php' , woocommerce_catalog_ordering() );
+    echo '
+    </div>
+    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span> 
+    </div>    
+    <div class="col-xs-6 text-right list-grid-wrapper">
+    <div class="btn-group btn-list-grid">
+    <button type="button" id="list-view" class="btn btn-default list-view"></button>
+    <button type="button" id="grid-view" class="btn btn-default grid-view active"></button>
+    </div>
+    </div>
+    </div>';
+}
+
+function woocommerce_catalog_ordering()
+{
+    if (!wc_get_loop_prop('is_paginated') || !woocommerce_products_will_display()) {
+        return;
+    }
+    $show_default_orderby = 'menu_order' === apply_filters('woocommerce_default_catalog_orderby', get_option('woocommerce_default_catalog_orderby', 'menu_order'));
+    $catalog_orderby_options = apply_filters(
+        'woocommerce_catalog_orderby',
+        array(
+            'menu_order' => __('Default sorting', 'woocommerce'),
+            'popularity' => __('Sort by popularity', 'woocommerce'),
+            'rating' => __('Sort by average rating', 'woocommerce'),
+            'date' => __('Sort by latest', 'woocommerce'),
+            'price' => __('Sort by price: low to high', 'woocommerce'),
+            'price-desc' => __('Sort by price: high to low', 'woocommerce'),
+        )
+    );
+
+    $default_orderby = wc_get_loop_prop('is_search') ? 'relevance' : apply_filters('woocommerce_default_catalog_orderby', get_option('woocommerce_default_catalog_orderby', ''));
+    $orderby = isset($_GET['orderby']) ? wc_clean(wp_unslash($_GET['orderby'])) : $default_orderby;
+         // WPCS: sanitization ok, input var ok, CSRF ok.
+
+    if (wc_get_loop_prop('is_search')) {
+        $catalog_orderby_options = array_merge(array('relevance' => __('Relevance', 'woocommerce')), $catalog_orderby_options);
+
+        unset($catalog_orderby_options['menu_order']);
+    }
+
+    if (!$show_default_orderby) {
+        unset($catalog_orderby_options['menu_order']);
+    }
+
+    if (!wc_review_ratings_enabled()) {
+        unset($catalog_orderby_options['rating']);
+    }
+
+    if (!array_key_exists($orderby, $catalog_orderby_options)) {
+        $orderby = current(array_keys($catalog_orderby_options));
+    }
+
+    $data = array(
+        'catalog_orderby_options' => $catalog_orderby_options,
+        'orderby' => $orderby,
+        'show_default_orderby' => $show_default_orderby,
+    );
+    return $data;
+
+// wc_get_template(
+//     'loop/orderby.php',
+//     array(
+//         'catalog_orderby_options' => $catalog_orderby_options,
+//         'orderby' => $orderby,
+//         'show_default_orderby' => $show_default_orderby,
+//     )
+// );
+}
+
+function custom_woocommerce_result_count()
+{
+    if (!wc_get_loop_prop('is_paginated') || !woocommerce_products_will_display()) {
+        return;
+    }
+    $args = array(
+        'total' => wc_get_loop_prop('total'),
+        'per_page' => wc_get_loop_prop('per_page'),
+        'current' => wc_get_loop_prop('current_page'),
+    );
+
+    wc_get_template('loop/result-count.php', $args);
+}
+
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
+
+/**
+ * END CUSTOM WOOCOMMERCE
+ * 
+ */
 ?>
+

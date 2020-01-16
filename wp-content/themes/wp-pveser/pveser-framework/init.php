@@ -11,7 +11,7 @@ require_once __THEME_PATH.'/pveser-framework/includes/systems/compression_html.c
 require_once __THEME_PATH.'/pveser-framework/includes/systems/header_cleaner.php';
 require_once __THEME_PATH.'/pveser-framework/includes/globals/functions_global.php';
 require_once __THEME_PATH.'/pveser-framework/includes/globals/shortcodes.php';
-require_once __THEME_PATH.'/pveser-framework/includes/woocommerce/functions_woocommerce.php';
+//require_once __THEME_PATH.'/pveser-framework/includes/woocommerce/functions_woocommerce.php';
 require_once __THEME_PATH.'/pveser-framework/configs/post_type.php';
 require_once __THEME_PATH.'/pveser-framework/configs/taxonomy.php';
 require_once __THEME_PATH.'/pveser-framework/includes/globals/register_actions.php';

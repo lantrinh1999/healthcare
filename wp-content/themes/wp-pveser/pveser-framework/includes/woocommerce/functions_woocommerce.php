@@ -77,7 +77,7 @@ function pveser_woocommerce_breadcrumbs() {
     );
 }
 
-add_filter( 'woocommerce_breadcrumb_defaults', 'my_woocommerce_breadcrumbs' );
+//add_filter( 'woocommerce_breadcrumb_defaults', 'pveser_woocommerce_breadcrumbs' );
 
 //add_filter ( 'woocommerce_product_thumbnails_columns', 'xx_thumb_cols' );
 function xx_thumb_cols() {

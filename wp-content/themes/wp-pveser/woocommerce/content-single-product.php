@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'row mt_10 single-product__', $product ); ?>>
 
 	<?php
 	/**
@@ -43,7 +43,7 @@ if ( post_password_required() ) {
 	do_action( 'woocommerce_before_single_product_summary' );
 	?>
 
-	<div class="summary entry-summary">
+	<div class="summary entry-summary col-md-6 prodetail caption product-thumb">
 		<?php
 		/**
 		 * Hook: woocommerce_single_product_summary.
@@ -60,6 +60,7 @@ if ( post_password_required() ) {
 		do_action( 'woocommerce_single_product_summary' );
 		?>
 	</div>
+</div>
 
 	<?php
 	/**
@@ -71,6 +72,6 @@ if ( post_password_required() ) {
 	 */
 	do_action( 'woocommerce_after_single_product_summary' );
 	?>
-</div>
+
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>

@@ -980,6 +980,58 @@ function custom_woocommerce_result_count()
 remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
 
+
+
+// single product 
+
+
+// remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+// add_action( 'woocommerce_before_single_product_summary', 'custom_woocommerce_show_product_images', 20 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+add_action( 'woocommerce_after_single_product_summary', 'custom_woocommerce_output_related_products', 20 );
+function custom_woocommerce_output_related_products()
+{
+
+    $args = array(
+        'posts_per_page' => 8,
+        'columns' => 4,
+            'orderby' => 'rand', // @codingStandardsIgnoreLine.
+        );
+
+    woocommerce_related_products(apply_filters('woocommerce_output_related_products_args', $args));
+}
+
+function custom_wc_get_rating_html($rating, $count = 0)
+{
+    $html = '';
+
+    if (0 < $rating) {
+        $html = '';
+        $star = '<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>';
+        $star_o = '<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>';
+        if ($rating > 0 && $rating <= 5) {
+            $html .= str_repeat($star, $rating);
+            $html .= str_repeat($star_o, 5 - $rating);
+            $html = '<div class="stars_rating">'.$html.'</div>';
+        }
+    }
+
+    return apply_filters('woocommerce_product_get_rating_html', $html, $rating, $count);
+}
+
+remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
+add_action( 'woocommerce_review_before', 'custom_woocommerce_review_display_gravatar', 10 );
+function custom_woocommerce_review_display_gravatar($comment)
+{
+    echo '<div class="col-xs-1">';
+    echo get_avatar($comment, apply_filters('woocommerce_review_gravatar_size', '100'), '');
+    echo '</div>';
+}
+
+
+
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+
 /**
  * END CUSTOM WOOCOMMERCE
  * 

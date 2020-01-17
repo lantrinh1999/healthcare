@@ -28,6 +28,7 @@ if ( ! $short_description ) {
 }
 
 ?>
-<div class="woocommerce-product-details__short-description">
+<div class="woocommerce-product-details__short-description product-desc mtb_30">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
 </div>
+<hr>

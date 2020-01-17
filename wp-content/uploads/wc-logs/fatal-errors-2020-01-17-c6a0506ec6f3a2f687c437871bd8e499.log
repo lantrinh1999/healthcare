@@ -1,0 +1,20 @@
+2020-01-17T07:21:07+00:00 CRITICAL Uncaught Error: Maximum function nesting level of '256' reached, aborting! in C:\xampp\htdocs\healthcare\wp-includes\cache.php:726
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\cache.php(544): WP_Object_Cache->_exists('template-single...', 'woocommerce')
+#1 C:\xampp\htdocs\healthcare\wp-includes\cache.php(123): WP_Object_Cache->get('template-single...', 'woocommerce', false, NULL)
+#2 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\includes\wc-core-functions.php(209): wp_cache_get('template-single...', 'woocommerce')
+#3 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\woocommerce\single-product\product-image.php(38): wc_get_template('single-product/...')
+#4 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\includes\wc-core-functions.php(249): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\woocommerce\single-product\product-image.php(38): wc_get_template('single-product/...')
+#6 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\ in C:\xampp\htdocs\healthcare\wp-includes\cache.php on line 726
+
+2020-01-17T07:21:24+00:00 CRITICAL Uncaught Error: Maximum function nesting level of '256' reached, aborting! in C:\xampp\htdocs\healthcare\wp-includes\cache.php:726
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\cache.php(544): WP_Object_Cache->_exists('template-single...', 'woocommerce')
+#1 C:\xampp\htdocs\healthcare\wp-includes\cache.php(123): WP_Object_Cache->get('template-single...', 'woocommerce', false, NULL)
+#2 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\includes\wc-core-functions.php(209): wp_cache_get('template-single...', 'woocommerce')
+#3 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\woocommerce\single-product\product-image.php(38): wc_get_template('single-product/...')
+#4 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\includes\wc-core-functions.php(249): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\woocommerce\single-product\product-image.php(38): wc_get_template('single-product/...')
+#6 C:\xampp\htdocs\healthcare\wp-content\plugins\woocommerce\ in C:\xampp\htdocs\healthcare\wp-includes\cache.php on line 726
+

@@ -53,7 +53,7 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
 	do_action( 'woocommerce_before_shop_loop' ); ?>
-	<div class="row">
+	<div class="row row-products">
 	<?php
 	woocommerce_product_loop_start();
 

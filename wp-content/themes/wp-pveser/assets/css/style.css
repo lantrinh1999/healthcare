@@ -424,7 +424,7 @@ h6 {
 }
 /* ----------------------------------------------
 1.4 Button---------------------------- */
-.btn {
+.btn, .btn2 {
 	background: #e74c3c none repeat scroll 0 0;
 	border-radius: 0;
 	color: #fff;
@@ -436,6 +436,12 @@ h6 {
 	background: #000 none repeat scroll 0 0;
 	color: #fff;
 	font-weight: 600;
+	text-decoration: none;
+}
+.btn2:hover, .btn2:focus, .btn2.focus {
+	background: #000 none repeat scroll 0 0;
+	color: #fff;
+	/*font-weight: 600;*/
 	text-decoration: none;
 }
 .btn-link-b, .btn-link-w {
@@ -610,6 +616,9 @@ i.right {
 	font-style: normal;
 	font-size: .6em;
 	font-weight: 400
+}
+mb_5 {
+	margin-bottom: 5px;
 }
 .circle span {
 	display: block;
@@ -1373,7 +1382,7 @@ input#amount {
 	font-size: 16px;
 	width: 140px;
 }
-.Shipping, .Order, .Save, .Safe {
+#column-left .Shipping, #column-left .Order, #column-left .Save, #column-left .Safe {
 	background: transparent url("../images/sprite.png") no-repeat scroll -127px 0px;
 	overflow: hidden;
 	height: 50px;
@@ -1637,12 +1646,16 @@ blockquote {
 .product-thumb a img + img {
 	display: none;
 }
+/*
+
 .product-thumb:hover a img {
 	display: none;
 }
 .product-thumb:hover a img + img {
 	display: block;
 }
+
+*/
 .image.product-imageblock > a {
 	background: #ffffff none repeat scroll 0 0;
 	border: 1px solid #e6e6e6;
@@ -2371,7 +2384,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 }
 
 .left-cms.left-sidebar-widget.mb_50 .icon-right {
-	
+
 }
 
 .feature-i-left:hover i {
@@ -2472,7 +2485,12 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	/*margin-top: 6px;*/
 	margin-right: 10px !important;
 }
-
+.woocommerce-MyAccount-navigation ul {
+	display: flex;
+}
+.woocommerce-MyAccount-navigation ul li {
+	padding: 10px;
+}
 .commentlist .comment_container {
 	display: flex;
 }
@@ -2546,4 +2564,68 @@ form.cart .quantity .input_quantity {
 }
 .comment-form-rating p span {
 	display: none;
+}
+
+.product-thumbnail img {
+	width: 70px !important;
+	height: auto;
+}
+
+.woocommerce table.shop_table {
+
+	margin: 0 -1px 24px 0;
+	text-align: left;
+	width: 100%;
+	border-collapse: collapse; 
+	border-radius: 0px;
+}
+
+.input-group.btn-block .input-group-btn button, .input-group.btn-block .input-group-btn a {
+	height: 38px;
+}
+
+.input-group.btn-block .input-group-btn a i {
+	padding-top: 3px;
+}
+
+.coupon input[name=coupon_code] {
+	width: 200px !important;
+}
+.woocommerce button.button {
+	background: #9E9E9E none repeat scroll 0 0;
+	border-radius: 0;
+	color: #fff;
+	padding: 13px 20px;
+	/*text-transform: uppercase;*/
+	font-weight: 500;
+}
+
+body .not_found {font-size:14px; color:#777777; font-family:arial; text-align:center;}
+.not_found h1 {font-size:180px; color:#99A7AF; margin: 70px 0 0 0;}
+.not_found h2 {color: #DE6C5D; font-family: arial; font-size: 20px; font-weight: bold; letter-spacing: -1px; margin: -3px 0 39px;}
+.not_found p {width:320px; text-align:center; margin-left:auto;margin-right:auto; margin-top: 30px }
+/*.not_found div {width:320px; text-align:center; margin-left:auto;margin-right:auto;}*/
+.not_found a:link {color: #34536A;}
+.not_found a:visited {color: #34536A;}
+.not_found a:active {color: #34536A;}
+.not_found a:hover {color: #34536A;}
+
+.home_product__ .product-thumb .button-group {
+	bottom: 90px;
+}
+
+.row_product img {
+	max-width: 100% !important;
+	height: auto !important;
+}
+
+.row_product .product-thumb a {
+	padding: 10px;
+}
+.row_product .product-thumb .product-name {
+	margin-bottom: 10px;
+}
+
+.btn_cart .btn, .btn_cart .btn:hover {
+	font-weight: normal;
 }

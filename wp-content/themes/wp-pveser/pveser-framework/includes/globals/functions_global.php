@@ -23,7 +23,7 @@ function pveser_excerpt($number = 100)
 {
 
     $excerpt = get_the_content();
-    if(strlen($excerpt)) {
+    if(strlen($excerpt) < $number) {
         return $excerpt;
     }
     $excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
@@ -819,7 +819,9 @@ function custom_woocommerce_template_loop_product_title()
     echo '</span>
     </span>
     <p class="product-desc mt_20 mb_60">
-    ' . pveser_excerpt() . '
+    ';
+    echo !empty(get_the_excerpt()) ? get_the_excerpt() : pveser_excerpt(300);
+    echo '
     </p>
     <div class="button-group text-center">
     <div class="wishlist"><a href="#"><span>wishlist</span></a></div>

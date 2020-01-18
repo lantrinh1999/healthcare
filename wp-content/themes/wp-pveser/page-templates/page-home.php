@@ -76,116 +76,36 @@ $midb = get_field('mid_banner');
 		</li>
 	</ul>
 	<div class="tab-content clearfix box">
-		<?php 
-		$query = new WC_Product_Query( 
-			[
-				'limit' => 10,
-				'orderby' => 'date',
-				'order' => 'DESC',
-			] 
-		);
-		$products = $query->get_products();
-		// dd($products);
-		?>
 		<div class="tab-pane active" id="nArrivals">
 			<div class="nArrivals owl-carousel">
+				<?php
+				$args1 = array(
+					'post_type' => 'product',
+					'posts_per_page' => 10,
+					'orderby' => 'date',
+					'order' => 'DESC',
+				);
+				$count = 0;
+				$html_p = 0;
+				$loop1 = new WP_Query( $args1 );
+				if ( $loop1->have_posts() ) {
+					while ( $loop1->have_posts() ) : $loop1->the_post();
+						$count++;
+						if ($count % 2 !== 0) {
+							echo '<div class="product-grid home_product__">';
+							get_template_part( 'template-parts/content', 'home_product' );
+						} else {
+							get_template_part( 'template-parts/content', 'home_product' );
+							echo '</div>';
+						}
+						// get_template_part( 'template-parts/content', 'home_product' );
+					endwhile;
+				} else {
+					echo __( 'No products found' );
+				}
+				wp_reset_postdata();
+				?>
 				
-				<div class="product-grid">
-					<div class="item">
-						<div class="product-thumb">
-							<div class="image product-imageblock"> 
-								<a href="product_detail_page.html"> 
-									<img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-									<img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-								</a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>
-										70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-									<div class="quickview"><a href="#"><span>Quick View</span></a></div>
-									<div class="compare"><a href="#"><span>Compare</span></a></div>
-									<div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="product-thumb">
-							<div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>
-										70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-									<div class="quickview"><a href="#"><span>Quick View</span></a></div>
-									<div class="compare"><a href="#"><span>Compare</span></a></div>
-									<div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -193,121 +113,34 @@ $midb = get_field('mid_banner');
 
 		<div class="tab-pane" id="Bestsellers">
 			<div class="Bestsellers owl-carousel">
-				<div class="product-grid">
-					<div class="item">
-						<div class="product-thumb  mb_30">
-							<div class="image product-imageblock"> 
-								<a href="product_detail_page.html"> 
-									<img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-									<img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-								</a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>
-										70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist">
-										<a href="#"><span>wishlist</span></a>
-									</div>
-									<div class="quickview">
-										<a href="#"><span>Quick View</span></a>
-									</div>
-									<div class="compare">
-										<a href="#"><span>Compare</span></a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#"><span>Add to cart</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="product-thumb  mb_30">
-							<div class="image product-imageblock"> 
-								<a href="product_detail_page.html"> 
-									<img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-									<img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-								</a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist">
-										<a href="#"><span>wishlist</span></a>
-									</div>
-									<div class="quickview">
-										<a href="#"><span>Quick View</span></a>
-									</div>
-									<div class="compare">
-										<a href="#"><span>Compare</span></a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#"><span>Add to cart</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php
+				$args2 = array(
+					'post_type' => 'product',
+					'posts_per_page' => 10,
+					'meta_key' => 'total_sales',
+					'orderby' => 'meta_value_num',
+					'order'       =>  'DESC',
+				);
+				$count = 0;
+				$html_p = 0;
+				$loop2 = new WP_Query( $args2 );
+				if ( $loop2->have_posts() ) {
+					while ( $loop2->have_posts() ) : $loop2->the_post();
+						$count++;
+						if ($count % 2 !== 0) {
+							echo '<div class="product-grid home_product__">';
+							get_template_part( 'template-parts/content', 'home_product' );
+						} else {
+							get_template_part( 'template-parts/content', 'home_product' );
+							echo '</div>';
+						}
+						// get_template_part( 'template-parts/content', 'home_product' );
+					endwhile;
+				} else {
+					echo __( 'No products found' );
+				}
+				wp_reset_postdata();
+				?>
 			</div>
 		</div>
 
@@ -316,120 +149,34 @@ $midb = get_field('mid_banner');
 
 		<div class="tab-pane" id="Featured">
 			<div class="Featured owl-carousel">
-				<div class="product-grid">
-					<div class="item">
-						<div class="product-thumb  mb_30">
-							<div class="image product-imageblock"> 
-								<a href="product_detail_page.html"> 
-									<img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-									<img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-								</a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist">
-										<a href="#"><span>wishlist</span></a>
-									</div>
-									<div class="quickview">
-										<a href="#"><span>Quick View</span></a>
-									</div>
-									<div class="compare">
-										<a href="#"><span>Compare</span></a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#"><span>Add to cart</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="product-thumb  mb_30">
-							<div class="image product-imageblock"> 
-								<a href="product_detail_page.html"> 
-									<img data-name="product_image" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-									<img src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive"> 
-								</a> 
-							</div>
-							<div class="caption product-detail text-left">
-								<h6 data-name="product_name" class="product-name mt_20">
-									<a href="#" title="Casual Shirt With Ruffle Hem">Latin literature from 45 BC, making it over old.</a>
-								</h6>
-								<div class="rating"> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-1x"></i>
-									</span> 
-									<span class="fa fa-stack">
-										<i class="fa fa-star-o fa-stack-1x"></i>
-										<i class="fa fa-star fa-stack-x"></i>
-									</span> 
-								</div>
-								<span class="price">
-									<span class="amount">
-										<span class="currencySymbol">$</span>70.00
-									</span>
-								</span>
-								<div class="button-group text-center">
-									<div class="wishlist">
-										<a href="#"><span>wishlist</span></a>
-									</div>
-									<div class="quickview"><a href="#">
-										<span>Quick View</span></a>
-									</div>
-									<div class="compare">
-										<a href="#"><span>Compare</span></a>
-									</div>
-									<div class="add-to-cart">
-										<a href="#"><span>Add to cart</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php
+				$args3 = array(
+					'post_type'           => 'product',
+					'posts_per_page'      => 10,
+					'orderby'             => 'date',
+					'order'               => 'DESC',
+					'post__in'            => wc_get_featured_product_ids(),
+				);
+				$count = 0;
+				$html_p = 0;
+				$loop3 = new WP_Query( $args3 );
+				if ( $loop3->have_posts() ) {
+					while ( $loop3->have_posts() ) : $loop3->the_post();
+						$count++;
+						if ($count % 2 !== 0) {
+							echo '<div class="product-grid home_product__">';
+							get_template_part( 'template-parts/content', 'home_product' );
+						} else {
+							get_template_part( 'template-parts/content', 'home_product' );
+							echo '</div>';
+						}
+						// get_template_part( 'template-parts/content', 'home_product' );
+					endwhile;
+				} else {
+					echo __( 'No products found' );
+				}
+				wp_reset_postdata();
+				?>
 			</div>
 		</div>
 	</div>
@@ -688,589 +435,101 @@ $midb = get_field('mid_banner');
 <div class="row">
 	<div class="col-md-4">
 		<div class="heading-part mb_20 ">
-			<h2 class="main_title">Featured</h2>
+			<h2 class="main_title">Nổi bật</h2>
 		</div>
 		<div id="featu-pro" class="owl-carousel">
-			<ul class="row ">
-				<li class="item product-layout-left mb_20">
-					<div class="product-list col-xs-4">
-						<div class="product-thumb">
-							<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5-1.jpg"> </a> </div>
-						</div>
-					</div>
-					<div class="col-xs-8">
-						<div class="caption product-detail">
-							<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-							<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-							<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-						</span>
-					</div>
-				</div>
-			</li>
-			<li class="item product-layout-left mb_20">
-				<div class="product-list col-xs-4">
-					<div class="product-thumb">
-						<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg"> </a> </div>
-					</div>
-				</div>
-				<div class="col-xs-8">
-					<div class="caption product-detail">
-						<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-						<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-						<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-					</span>
-				</div>
-			</div>
-		</li>
-		<li class="item product-layout-left mb_20">
-			<div class="product-list col-xs-4">
-				<div class="product-thumb">
-					<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3-1.jpg"> </a> </div>
-				</div>
-			</div>
-			<div class="col-xs-8">
-				<div class="caption product-detail">
-					<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-					<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-					<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-				</span>
-			</div>
-		</div>
-	</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
+			<?php
+
+			$count = 0;
+			if ( $loop3->have_posts() ) {
+				while ( $loop3->have_posts() ) : $loop3->the_post();
+					$count++;
+					if ($count == 10) {
+						break;
+					}
+					if ($count % 3 == 1) {
+						echo '<ul class="row row_product">';
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} elseif ($count % 3 == 2) {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} else {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+						echo '</ul>';
+					}
+						// get_template_part( 'template-parts/content', 'home_product' );
+				endwhile;
+			} else {
+				echo __( 'No products found' );
+			}
+			wp_reset_postdata();
+			?>
+
 		</div>
 	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5-1.jpg"> </a> </div>
+	<div class="col-md-4">
+		<div class="heading-part mb_20 ">
+			<h2 class="main_title">Bán chạy</h2>
+		</div>
+		<div id="bests-pro" class="owl-carousel">
+			<?php
+
+			$count = 0;
+			if ( $loop2->have_posts() ) {
+				while ( $loop2->have_posts() ) : $loop2->the_post();
+					$count++;
+					if ($count == 10) {
+						break;
+					}
+					if ($count % 3 == 1) {
+						echo '<ul class="row row_product">';
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} elseif ($count % 3 == 2) {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} else {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+						echo '</ul>';
+					}
+						// get_template_part( 'template-parts/content', 'home_product' );
+				endwhile;
+			} else {
+				echo __( 'No products found' );
+			}
+			wp_reset_postdata();
+			?>
 		</div>
 	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product6.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product6-1.jpg"> </a> </div>
+	<div class="col-md-4">
+		<div class="heading-part mb_20 ">
+			<h2 class="main_title">Mới</h2>
+		</div>
+		<div id="new-pro" class="owl-carousel">
+			<?php
+
+			$count = 0;
+			if ( $loop1->have_posts() ) {
+				while ( $loop1->have_posts() ) : $loop1->the_post();
+					$count++;
+					if ($count == 10) {
+						break;
+					}
+					if ($count % 3 == 1) {
+						echo '<ul class="row row_product">';
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} elseif ($count % 3 == 2) {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+					} else {
+						get_template_part( 'template-parts/content', 'home_product_bottom' );
+						echo '</ul>';
+					}
+						// get_template_part( 'template-parts/content', 'home_product' );
+				endwhile;
+			} else {
+				echo __( 'No products found' );
+			}
+			wp_reset_postdata();
+			?>
 		</div>
 	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product9.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product9-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="col-md-4">
-	<div class="heading-part mb_20 ">
-		<h2 class="main_title">Bestseller</h2>
-	</div>
-	<div id="bests-pro" class="owl-carousel">
-		<ul class="row ">
-			<li class="item product-layout-left mb_20">
-				<div class="product-list col-xs-4">
-					<div class="product-thumb">
-						<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg"> </a> </div>
-					</div>
-				</div>
-				<div class="col-xs-8">
-					<div class="caption product-detail">
-						<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-						<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-						<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-					</span>
-				</div>
-			</div>
-		</li>
-		<li class="item product-layout-left mb_20">
-			<div class="product-list col-xs-4">
-				<div class="product-thumb">
-					<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3-1.jpg"> </a> </div>
-				</div>
-			</div>
-			<div class="col-xs-8">
-				<div class="caption product-detail">
-					<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-					<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-					<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-				</span>
-			</div>
-		</div>
-	</li>
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="col-md-4">
-	<div class="heading-part mb_20 ">
-		<h2 class="main_title">New Item’s</h2>
-	</div>
-	<div id="new-pro" class="owl-carousel">
-		<ul class="row ">
-			<li class="item product-layout-left mb_20">
-				<div class="product-list col-xs-4">
-					<div class="product-thumb">
-						<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4-1.jpg"> </a> </div>
-					</div>
-				</div>
-				<div class="col-xs-8">
-					<div class="caption product-detail">
-						<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-						<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-						<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-					</span>
-				</div>
-			</div>
-		</li>
-		<li class="item product-layout-left mb_20">
-			<div class="product-list col-xs-4">
-				<div class="product-thumb">
-					<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5-1.jpg"> </a> </div>
-				</div>
-			</div>
-			<div class="col-xs-8">
-				<div class="caption product-detail">
-					<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-					<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-					<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-				</span>
-			</div>
-		</div>
-	</li>
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product6.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product6-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product7-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product8-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product9.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product9-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product10-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product1-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product2-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-<ul class="row ">
-	<li class="item product-layout-left mb_20">
-		<div class="product-list col-xs-4">
-			<div class="product-thumb">
-				<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product3-1.jpg"> </a> </div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="caption product-detail">
-				<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-				<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-				<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-			</span>
-		</div>
-	</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product4-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-<li class="item product-layout-left mb_20">
-	<div class="product-list col-xs-4">
-		<div class="product-thumb">
-			<div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="/healthcare/wp-content/themes/wp-pveser/assets/images/product/product5-1.jpg"> </a> </div>
-		</div>
-	</div>
-	<div class="col-xs-8">
-		<div class="caption product-detail">
-			<h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-			<div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-			<span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-		</span>
-	</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 <!-- =====  product end  ===== -->
 <?php 

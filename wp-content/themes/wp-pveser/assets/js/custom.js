@@ -128,6 +128,13 @@ $(function() {
                 }
             })
         })
+
+        // console.log(is_404);
+        if(typeof is_404 != 'undefined' && is_404 == true)
+        {
+            $('body').find('.menu-bar').click();
+        }
+        $('body .woocommerce-MyAccount-content a.woocommerce-Button.button').html('Xem sản phẩm');
         
 
     }

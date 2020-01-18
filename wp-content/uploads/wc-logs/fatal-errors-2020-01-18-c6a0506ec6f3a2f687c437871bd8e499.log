@@ -1,0 +1,60 @@
+2020-01-18T03:43:55+00:00 CRITICAL Object of class WP_User could not be converted to string in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\header.php on line 43
+
+2020-01-18T08:40:46+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Simple::the_post() in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:91
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 91
+
+2020-01-18T11:22:43+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:444
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 444
+
+2020-01-18T11:23:20+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:444
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 444
+
+2020-01-18T11:23:32+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:444
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 444
+
+2020-01-18T11:24:54+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:452
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 452
+
+2020-01-18T11:26:03+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:452
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 452
+
+2020-01-18T11:27:17+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php:452
+Stack trace:
+#0 C:\xampp\htdocs\healthcare\wp-includes\template-loader.php(98): include()
+#1 C:\xampp\htdocs\healthcare\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\healthcare\index.php(17): require('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 452
+
+2020-01-18T11:38:26+00:00 CRITICAL syntax error, unexpected 'if' (T_IF), expecting '(' in C:\xampp\htdocs\healthcare\wp-content\themes\wp-pveser\page-templates\page-home.php on line 455
+
